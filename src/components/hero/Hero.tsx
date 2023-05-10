@@ -17,7 +17,7 @@ export default function Hero() {
         </p>
         <Link href={"/cadastro"}>Cadastre-se!</Link>
       </div>
-      <Image src='/hero2.png' alt='avatar' width={450} height={521} />
+      <Image src='/hero3.png' alt='avatar' width={450} height={521} />
     </div>
   );
 }
