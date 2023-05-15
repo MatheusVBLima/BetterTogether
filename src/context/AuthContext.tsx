@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/apiClient";
 import Router from "next/router";
 import { setCookie, parseCookies, destroyCookie } from "nookies";
+import axios from "axios";
 
 type User = {
   permissions: string[];
@@ -81,7 +82,7 @@ type redefinePasswordCredentials = {
 };
 
 type AuthContextData = {
-  sigIn(credentials: SignInCredentials): Promise<void>;
+  signIn(credentials: SignInCredentials): Promise<void>;
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
   payment(credentials: paymentCredentials): Promise<void>;
@@ -125,8 +126,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }, []);
 
-  async function sigIn({ email, password }: SignInCredentials) {
-    const response = await api.post("/login", {
+  async function signIn({ email, password }: SignInCredentials) {
+    const response = await api.post("/signin", {
       email,
       password,
     });
@@ -158,7 +159,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       email,
       password,
     });
-    sigIn({ email, password });
+    signIn({ email, password });
   }
 
   async function payment({
@@ -177,7 +178,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       card_data,
       plan_data,
     });
-    sigIn({ email, password });
+    signIn({ email, password });
   }
 
   async function recover({ email }: recoverCredentials) {
@@ -215,7 +216,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   return (
     <AuthContext.Provider
       value={{
-        sigIn,
+        signIn,
         signUp,
         signOut,
         payment,

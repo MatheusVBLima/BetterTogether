@@ -1,16 +1,28 @@
 import React from "react";
 import styles from "./loginContent.module.scss";
 import Link from "next/link";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function CadastroContent() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  const { signIn } = React.useContext(AuthContext);
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    const data = {
+      email,
+      password,
+    };
+    await signIn(data);
+  }
+
   return (
     <main className={styles.mainWrapper}>
       <div className={styles.mainContainer}>
         <h1>Login</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type='text'
             placeholder='Email'

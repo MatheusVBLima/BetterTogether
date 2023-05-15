@@ -1,22 +1,35 @@
 import React from "react";
 import styles from "./cadastroContent.module.scss";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function CadastroContent() {
-  const [nome, setNome] = React.useState("");
+  const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  const { signUp } = React.useContext(AuthContext);
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    const data = {
+      email,
+      password,
+      name,
+    };
+    await signUp(data);
+  }
 
   return (
     <main className={styles.mainWrapper}>
       <div className={styles.mainContainer}>
         <h1>Cadastro</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type='text'
             placeholder='Nome'
             alt='Campo de nome'
             required
-            onChange={(e) => setNome(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
           <input
             type='text'

@@ -1,12 +1,13 @@
 import Footer from "@/components/footer/Footer";
+import { AuthProvider } from "@/context/AuthContext";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <AuthProvider>
       <Component {...pageProps} />
       <Footer />
-    </div>
+    </AuthProvider>
   );
 }
