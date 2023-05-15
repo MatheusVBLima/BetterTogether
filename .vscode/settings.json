@@ -1,9 +1,2 @@
 {
-    "workbench.colorCustomizations": {
-        "sideBar.border": "#93e6fc",
-        "tab.activeBorder": "#93e6fc",
-        "titleBar.activeBackground": "#61dafb",
-        "titleBar.inactiveBackground": "#61dafb99"
-    },
-    "peacock.color": "#61dafb"
 }

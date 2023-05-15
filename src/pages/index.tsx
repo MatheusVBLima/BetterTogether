@@ -3,7 +3,7 @@ import Hero from "@/components/hero/Hero";
 import HeaderApp from "@/components/headerApp/HeaderApp";
 import { withSSRGuest } from "@/utils/withSSRGuest";
 
-export default function Home() {
+export default function home() {
   return (
     <>
       <Head>

@@ -8,16 +8,16 @@ export default function Dashboard() {
       <h3>Painel</h3>
       <ul>
         <li>
-          <Link href={""}>Perfil</Link>
+          <Link href={"/perfil"}>Perfil</Link>
         </li>
         <li>
-          <Link href={""}>Adicionar Área de Experiência</Link>
+          <Link href={"/areasExperiencia"}>Adicionar Área de Experiência</Link>
         </li>
         <li>
-          <Link href={""}>Criar Projeto</Link>
+          <Link href={"/criarProjeto"}>Criar Projeto</Link>
         </li>
         <li>
-          <Link href={""}>Meus Projetos</Link>
+          <Link href={"/meusProjetos"}>Meus Projetos</Link>
         </li>
         <li>
           <Link href={""}>Voltar</Link>
