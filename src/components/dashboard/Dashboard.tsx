@@ -11,7 +11,7 @@ export default function Dashboard() {
           <Link href={"/perfil"}>Perfil</Link>
         </li>
         <li>
-          <Link href={"/areasExperiencia"}>Adicionar Área de Experiência</Link>
+          <Link href={"/experiencia"}>Adicionar Área de Experiência</Link>
         </li>
         <li>
           <Link href={"/criarProjeto"}>Criar Projeto</Link>
