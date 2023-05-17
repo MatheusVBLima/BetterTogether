@@ -14,6 +14,9 @@ export default function Dashboard() {
       <h3>Painel</h3>
       <ul>
         <li>
+          <Link href={"/painel"}>Painel</Link>
+        </li>
+        <li>
           <Link href={"/perfil"}>Perfil</Link>
         </li>
         <li>

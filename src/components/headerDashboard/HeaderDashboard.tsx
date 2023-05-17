@@ -6,7 +6,9 @@ export default function HeaderDashboard() {
   return (
     <header className={styles.headerWrapper}>
       <div className={styles.headerContainer}>
-        <span>Better Together</span>
+        <span>
+          Better <span>Together</span>
+        </span>
         <Link href='/login'>Sair</Link>
       </div>
     </header>

@@ -33,3 +33,27 @@
     }
   }
 }
+@media screen and (max-width: 500px) {
+  .headerWrapper {
+    max-width: 100%;
+
+    .headerContainer {
+      max-width: 100%;
+      padding: 0 1rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & > span {
+        font-size: var(--header);
+        font-weight: bold;
+        white-space: wrap;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}
