@@ -23,4 +23,5 @@ export default function perfil() {
   return {
     props: {},
   };
-}); */
+});
+ */

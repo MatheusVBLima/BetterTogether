@@ -19,8 +19,9 @@ export default function cadastro() {
   );
 }
 
-export const getServerSideProps = withSSRGuest(async (ctx) => {
+/* export const getServerSideProps = withSSRGuest(async (ctx) => {
   return {
     props: {},
   };
 });
+ */

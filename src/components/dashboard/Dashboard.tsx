@@ -1,8 +1,14 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./dashboard.module.scss";
+import { useRouter } from "next/router";
 
 export default function Dashboard() {
+  const router = useRouter();
+
+  const handleVoltar = () => {
+    router.back();
+  };
   return (
     <div className={styles.wrapper}>
       <h3>Painel</h3>
@@ -20,7 +26,9 @@ export default function Dashboard() {
           <Link href={"/meusProjetos"}>Meus Projetos</Link>
         </li>
         <li>
-          <Link href={""}>Voltar</Link>
+          <Link href={""} onClick={handleVoltar}>
+            Voltar
+          </Link>
         </li>
       </ul>
     </div>
