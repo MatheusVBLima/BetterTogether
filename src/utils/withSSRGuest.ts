@@ -5,14 +5,12 @@ import {
 } from "next";
 import { parseCookies } from "nookies";
 
-export function withSSRGuest<P extends { [key: string]: any }>(
-  fn: GetServerSideProps<P & { [key: string]: unknown }>
-): GetServerSideProps<P> {
+export function withSSRGuest<P>(fn: GetServerSideProps<P>): GetServerSideProps {
   return async (
     ctx: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
     const cookies = parseCookies(ctx);
-    if (cookies["BT.token"]) {
+    if (cookies["CL.token"]) {
       return {
         redirect: {
           destination: "/painel",
@@ -20,7 +18,6 @@ export function withSSRGuest<P extends { [key: string]: any }>(
         },
       };
     }
-    const result = await fn(ctx);
-    return result;
+    return await fn(ctx);
   };
 }

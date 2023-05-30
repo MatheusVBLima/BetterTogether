@@ -20,52 +20,6 @@ type SignUpCredentials = {
   password: string;
 };
 
-type customer_data = {
-  cpf: string;
-  address: address;
-  phone: phone;
-};
-
-type phone = {
-  ddi: string;
-  ddd: string;
-  number: string;
-};
-
-type address = {
-  country: string;
-  state: string;
-  city: string;
-  neighborhood: string;
-  street: string;
-  street_number: string;
-  complement?: string;
-  zipcode: string;
-};
-
-type card_data = {
-  label: string;
-  holder_name: string;
-  number: string;
-  expiration_month: string;
-  expiration_year: string;
-  cvv: string;
-};
-
-type plan_data = {
-  id: string;
-  frequency: string;
-};
-
-type paymentCredentials = {
-  name: string;
-  email: string;
-  password: string;
-  customer_data: customer_data;
-  plan_data: plan_data;
-  card_data: card_data;
-};
-
 type recoverCredentials = {
   email: string;
 };
@@ -85,7 +39,7 @@ type AuthContextData = {
   signIn(credentials: SignInCredentials): Promise<void>;
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
-  payment(credentials: paymentCredentials): Promise<void>;
+
   user: User;
   isAuthenticated: boolean;
   recover(credentials: recoverCredentials): Promise<void>;
@@ -162,25 +116,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     signIn({ email, password });
   }
 
-  async function payment({
-    name,
-    email,
-    password,
-    customer_data,
-    card_data,
-    plan_data,
-  }: paymentCredentials) {
-    await api.post("/signup", {
-      name,
-      email,
-      password,
-      customer_data,
-      card_data,
-      plan_data,
-    });
-    signIn({ email, password });
-  }
-
   async function recover({ email }: recoverCredentials) {
     await api.post("/solicitations/forgot-password", {
       email,
@@ -219,7 +154,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
         signIn,
         signUp,
         signOut,
-        payment,
         recover,
         changePassword,
         redefinePassword,

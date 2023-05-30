@@ -1,11 +1,26 @@
 import HeaderDashboard from "@/components/headerDashboard/HeaderDashboard";
 import PainelContent from "@/components/painelContent/PainelContent";
+import { setupApiClient } from "@/services/api";
 import { withSSRAuth } from "@/utils/withSSRAuth";
 import { withSSRGuest } from "@/utils/withSSRGuest";
 import Head from "next/head";
 import React from "react";
+import { GetServerSidePropsContext } from "next";
+import { ParsedUrlQuery } from "querystring";
 
-export default function dashboard() {
+interface userMe {
+  id: number;
+  name: string;
+  email: string;
+  projects: [];
+  experiences: [];
+}
+
+interface Props {
+  userMe: userMe;
+}
+
+export default function dashboard({ userMe }: Props) {
   return (
     <div>
       <Head>
@@ -15,14 +30,23 @@ export default function dashboard() {
         {/*  <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <HeaderDashboard />
-      <PainelContent />
+      <PainelContent userMe={userMe} />
     </div>
   );
 }
 
-/* export const getServerSideProps = withSSRAuth(async (ctx) => {
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  const apiClient = setupApiClient(ctx);
+  let userMe = null;
+  try {
+    const responseUserMe = await apiClient.get("/me");
+    userMe = responseUserMe.data;
+  } catch (err) {
+    console.log(err);
+  }
   return {
-    props: {},
+    props: {
+      userMe: userMe,
+    },
   };
 });
- */

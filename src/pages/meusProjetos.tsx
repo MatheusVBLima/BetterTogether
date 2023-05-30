@@ -19,8 +19,8 @@ export default function meusProjetos() {
   );
 }
 
-/* export const getServerSideProps = withSSRAuth(async (ctx) => {
+export const getServerSideProps = withSSRAuth(async (ctx) => {
   return {
     props: {},
   };
-}); */
+});

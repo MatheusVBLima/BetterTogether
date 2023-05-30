@@ -4,13 +4,25 @@ import styles from "./painelContent.module.scss";
 import Dashboard from "../dashboard/Dashboard";
 import { MaskSad } from "@phosphor-icons/react";
 
-export default function PainelContent() {
+type userMe = {
+  id: number;
+  name?: string;
+  email: string;
+  projects: [];
+  experiences: [];
+};
+
+interface Props {
+  userMe: userMe;
+}
+
+export default function PainelContent({ userMe }: Props) {
   return (
     <div className={styles.wrapper}>
       <Dashboard />
       <div className={styles.painel}>
         <div className={styles.userContainer}>
-          <h2>Olá, Usuário!</h2>
+          <h2>Olá, {/* {userMe.name} */}!</h2>
         </div>
         <div className={styles.noProjectContainer}>
           <p>Você ainda não foi conectado com nenhuma projeto</p>

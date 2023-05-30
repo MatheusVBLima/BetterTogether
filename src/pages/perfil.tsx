@@ -19,9 +19,8 @@ export default function perfil() {
   );
 }
 
-/* export const getServerSideProps = withSSRAuth(async (ctx) => {
+export const getServerSideProps = withSSRAuth(async (ctx) => {
   return {
     props: {},
   };
 });
- */
