@@ -11,14 +11,12 @@ export default function Dashboard() {
   };
   return (
     <div className={styles.wrapper}>
-      <h3>Painel</h3>
+      <h3>Menu</h3>
       <ul>
         <li>
           <Link href={"/painel"}>Painel</Link>
         </li>
-        <li>
-          <Link href={"/perfil"}>Perfil</Link>
-        </li>
+
         <li>
           <Link href={"/experiencia"}>Adicionar Área de Experiência</Link>
         </li>
@@ -29,10 +27,13 @@ export default function Dashboard() {
           <Link href={"/meusProjetos"}>Meus Projetos</Link>
         </li>
         <li>
+          <Link href={"/perfil"}>Perfil</Link>
+        </li>
+        {/* <li>
           <Link href={""} onClick={handleVoltar}>
             Voltar
           </Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

@@ -8,13 +8,13 @@ import React from "react";
 import { GetServerSidePropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
 
-interface userMe {
+type userMe = {
   id: number;
   name: string;
   email: string;
   projects: [];
   experiences: [];
-}
+};
 
 interface Props {
   userMe: userMe;

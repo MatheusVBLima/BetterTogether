@@ -35,7 +35,7 @@ type redefinePasswordCredentials = {
   solicitation: string;
 };
 
-type AuthContextData = {
+type ContextData = {
   signIn(credentials: SignInCredentials): Promise<void>;
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
@@ -47,9 +47,9 @@ type AuthContextData = {
   redefinePassword(credentials: redefinePasswordCredentials): Promise<void>;
 };
 
-export const AuthContext = createContext({} as AuthContextData);
+export const Context = createContext({} as ContextData);
 
-type AuthProviderProps = {
+type ProviderProps = {
   children: ReactNode;
 };
 
@@ -60,7 +60,7 @@ export function signOut() {
   Router.push("/");
 }
 
-export function AuthProvider({ children }: AuthProviderProps) {
+export function Provider({ children }: ProviderProps) {
   const [user, setUser] = useState<User>(null);
   const isAuthenticated = !!user;
 
@@ -149,7 +149,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider
+    <Context.Provider
       value={{
         signIn,
         signUp,
@@ -162,6 +162,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       }}
     >
       {children}
-    </AuthContext.Provider>
+    </Context.Provider>
   );
 }

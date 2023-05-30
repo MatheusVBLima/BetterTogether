@@ -7,7 +7,7 @@ export default function AreasExperienciaContent() {
 
   const handleInputChange = (
     index: number,
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const newInputs = [...inputs];
     newInputs[index].value = event.target.value;
@@ -35,6 +35,7 @@ export default function AreasExperienciaContent() {
     // Faça o que desejar com os valores dos inputs
     console.log(values);
   };
+
   return (
     <div className={styles.wrapper}>
       <Dashboard />
@@ -45,12 +46,21 @@ export default function AreasExperienciaContent() {
         <div className={styles.formsContainer}>
           {inputs.map((input, index) => (
             <div key={index}>
-              <label htmlFor=''>Digite uma área de experiência</label>
-              <input
-                type='text'
+              <label htmlFor={`select-${index}`}>
+                Selecione uma área de experiência
+              </label>
+              <select
+                id={`select-${index}`}
                 value={input.value}
                 onChange={(event) => handleInputChange(index, event)}
-              />
+              >
+                <option value=''>Selecione...</option>
+                <option value='PHP'>PHP</option>
+                <option value='React'>React</option>
+                <option value='Spring'>Spring</option>
+                <option value='Next'>Next</option>
+                <option value='Express'>Express</option>
+              </select>
             </div>
           ))}
         </div>

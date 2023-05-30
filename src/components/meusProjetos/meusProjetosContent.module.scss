@@ -9,10 +9,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 2rem;
+    gap: 10rem;
     padding: 2rem 1rem;
-    padding-bottom: 4rem;
-    /* height: 75vh; */
+    height: 75vh;
     border-left: 2px solid var(--gray-700);
 
     .userContainer {
@@ -30,6 +29,20 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(18.75rem, 350px));
       width: 78%;
+    }
+
+    .noProjectContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-right: 22%;
+
+      p {
+        font-size: var(--details);
+        color: var(--gray-400);
+      }
     }
   }
 }

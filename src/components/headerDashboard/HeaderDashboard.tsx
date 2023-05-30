@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React, { useContext } from "react";
 import styles from "./headerDashboard.module.scss";
-import { AuthContext } from "@/context/AuthContext";
+import { Context } from "@/context/Context";
 
 export default function HeaderDashboard() {
-  const { signOut } = useContext(AuthContext);
+  const { signOut } = useContext(Context);
 
   function handleSignOut() {
     signOut();

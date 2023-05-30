@@ -1,10 +1,23 @@
 import HeaderDashboard from "@/components/headerDashboard/HeaderDashboard";
 import MeusProjetosContent from "@/components/meusProjetos/MeusProjetosContent";
+import { setupApiClient } from "@/services/api";
 import { withSSRAuth } from "@/utils/withSSRAuth";
 import Head from "next/head";
 import React from "react";
 
-export default function meusProjetos() {
+type userMe = {
+  id: number;
+  name: string;
+  email: string;
+  projects: [];
+  experiences: [];
+};
+
+interface Props {
+  userMe: userMe;
+}
+
+export default function meusProjetos({ userMe }: Props) {
   return (
     <div>
       <Head>
@@ -14,13 +27,23 @@ export default function meusProjetos() {
         {/*  <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <HeaderDashboard />
-      <MeusProjetosContent />
+      <MeusProjetosContent userMe={userMe} />
     </div>
   );
 }
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
+  const apiClient = setupApiClient(ctx);
+  let userMe = null;
+  try {
+    const responseUserMe = await apiClient.get("/me");
+    userMe = responseUserMe.data;
+  } catch (err) {
+    console.log(err);
+  }
   return {
-    props: {},
+    props: {
+      userMe: userMe,
+    },
   };
 });

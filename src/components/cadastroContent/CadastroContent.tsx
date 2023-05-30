@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./cadastroContent.module.scss";
-import { AuthContext } from "@/context/AuthContext";
+import { AuthContext } from "@/context/Context";
 
 export default function CadastroContent() {
   const [name, setName] = React.useState("");

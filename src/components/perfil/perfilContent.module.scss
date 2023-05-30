@@ -20,10 +20,45 @@
       justify-items: center;
       /* width: 100%; */
       margin-right: 22%;
+      /* font-size: 1.5rem; */
     }
 
     .formsContainer {
       margin-right: 22%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 400px;
+
+      .nameContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 1.25rem;
+      }
+
+      .emailContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 1.25rem;
+      }
+
+      button {
+        padding: 0.25rem 1rem;
+        border-radius: 10px;
+        border: none;
+        background-color: var(--yellow);
+        color: var(--gray-900);
+
+        &:hover {
+          filter: brightness(1.2);
+        }
+      }
     }
   }
 }
