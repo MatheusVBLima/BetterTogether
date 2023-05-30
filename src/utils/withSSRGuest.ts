@@ -10,7 +10,7 @@ export function withSSRGuest<P>(fn: GetServerSideProps<P>): GetServerSideProps {
     ctx: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
     const cookies = parseCookies(ctx);
-    if (cookies["CL.token"]) {
+    if (cookies["BT.token"]) {
       return {
         redirect: {
           destination: "/painel",

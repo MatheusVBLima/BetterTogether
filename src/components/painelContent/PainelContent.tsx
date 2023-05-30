@@ -22,7 +22,7 @@ export default function PainelContent({ userMe }: Props) {
       <Dashboard />
       <div className={styles.painel}>
         <div className={styles.userContainer}>
-          <h2>Olá, {/* {userMe.name} */}!</h2>
+          <h2>Olá, {userMe.name}!</h2>
         </div>
         <div className={styles.noProjectContainer}>
           <p>Você ainda não foi conectado com nenhuma projeto</p>
