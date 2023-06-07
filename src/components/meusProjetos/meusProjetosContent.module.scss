@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  /* max-height: 75vh; */
 
   .painel {
     display: flex;
@@ -11,7 +12,7 @@
     justify-content: flex-start;
     gap: 10rem;
     padding: 2rem 1rem;
-    height: 75vh;
+    /* height: 75vh; */
     border-left: 2px solid var(--gray-700);
 
     .userContainer {
@@ -29,6 +30,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(18.75rem, 350px));
       width: 78%;
+      max-height: 100%;
     }
 
     .noProjectContainer {
@@ -50,7 +52,7 @@
 @media screen and (max-width: 1024px) {
   .wrapper {
     flex-direction: column;
-    min-height: 100%;
+
     .painel {
       width: 100%;
       border-left: none;
@@ -58,6 +60,7 @@
       padding: 2rem 1rem;
       height: 100%;
       gap: 2rem;
+
       .userContainer {
         text-align: center;
       }
