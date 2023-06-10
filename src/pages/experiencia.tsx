@@ -1,5 +1,6 @@
 import AreasExperienciaContent from "@/components/areasExperiencia/AreasExperienciaContent";
 import HeaderDashboard from "@/components/headerDashboard/HeaderDashboard";
+import { setupApiClient } from "@/services/api";
 import { withSSRAuth } from "@/utils/withSSRAuth";
 import Head from "next/head";
 import React from "react";

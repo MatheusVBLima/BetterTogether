@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { FormEvent, useContext, useState } from "react";
 import Dashboard from "../dashboard/Dashboard";
 import styles from "./areasExperienciaContent.module.scss";
+import { Context } from "@/context/Context";
+import { ClipLoader } from "react-spinners";
+import { CheckCircle } from "phosphor-react";
 
 export default function AreasExperienciaContent() {
   const [inputs, setInputs] = useState([{ value: "" }]);
+  const { addExperience } = useContext(Context);
+  const [Error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [confirm, setConfirm] = useState<boolean>(false);
 
   const handleInputChange = (
     index: number,
@@ -30,11 +37,37 @@ export default function AreasExperienciaContent() {
     }
   };
 
-  const handleSubmit = () => {
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
     const values = inputs.map((input) => input.value);
-    // Faça o que desejar com os valores dos inputs
     console.log(values);
-  };
+    const data = {
+      experienceName: values,
+    };
+    try {
+      setIsLoading(true);
+      await addExperience(data);
+      setConfirm(true);
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const { message, details } = error.response.data;
+        if (details) {
+          const errorMessages = Object.entries(details)
+            .map(([key, value]) => `${key}: ${value}`)
+            .join("; ");
+          setError(`Erro no envio de dados: ${errorMessages}`);
+        } else if (message) {
+          setError(message);
+        } else {
+          setError("Ocorreu um erro ao processar a solicitação.");
+        }
+      } else {
+        setError("Ocorreu um erro ao processar a solicitação.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -71,6 +104,21 @@ export default function AreasExperienciaContent() {
           {inputs.length > 1 && <button onClick={handleRemoveInput}>-</button>}
         </div>
         <button onClick={handleSubmit}>Enviar</button>
+        <div className={styles.errorContainer}>
+          {isLoading && (
+            <ClipLoader
+              color={"#f3bf22"}
+              loading={isLoading}
+              size={50}
+              className={styles.spinner}
+            />
+          )}
+          {confirm ? (
+            <CheckCircle size={35} color='green' />
+          ) : Error && !confirm ? (
+            <p>{Error}</p>
+          ) : null}
+        </div>
       </div>
     </div>
   );

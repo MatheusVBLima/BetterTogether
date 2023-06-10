@@ -23,7 +23,7 @@
       /* font-size: 1.5rem; */
     }
 
-    .formsContainer {
+    .choiceContainer {
       margin-right: 22%;
       display: flex;
       flex-direction: column;
@@ -40,7 +40,7 @@
         font-size: 1.25rem;
       }
 
-      .emailContainer {
+      .buttonsContainer {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -48,15 +48,82 @@
         font-size: 1.25rem;
       }
 
-      button {
+      a {
         padding: 0.25rem 1rem;
         border-radius: 10px;
         border: none;
         background-color: var(--yellow);
         color: var(--gray-900);
+        margin-left: auto;
 
         &:hover {
           filter: brightness(1.2);
+        }
+      }
+    }
+
+    .formContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-right: 22%;
+      margin-top: 5rem;
+      padding: 3rem 2rem;
+      background: #232526; /* fallback for old browsers */
+      background: -webkit-linear-gradient(
+        to top,
+        #414345,
+        #232526
+      ); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(
+        to top,
+        #414345,
+        #232526
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      border-radius: 10px;
+      width: 25%;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        input {
+          width: 100%;
+          padding: 0.5rem 1rem;
+          border-radius: 10px;
+          border: none;
+          background-color: var(--gray-100);
+          color: var(--gray-100);
+          font-size: 1.25rem;
+
+          outline: none;
+          color: black;
+
+          &::placeholder {
+            color: black;
+          }
+        }
+
+        button {
+          padding: 0.5rem 1rem;
+          border-radius: 10px;
+          border: none;
+          background-color: var(--yellow);
+          color: var(--gray-900);
+
+          &:hover {
+            filter: brightness(1.2);
+          }
+        }
+
+        p {
+          color: red;
         }
       }
     }
@@ -76,8 +143,9 @@
       gap: 2rem;
 
       .userContainer,
-      .formsContainer,
-      .buttonsContainer {
+      .formContainer,
+      .buttonsContainer,
+      .choiceContainer {
         flex-direction: column;
         align-items: center;
         gap: 2rem;

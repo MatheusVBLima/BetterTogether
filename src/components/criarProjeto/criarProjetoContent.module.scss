@@ -26,6 +26,10 @@
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
       .inputContainer {
         display: flex;
@@ -53,6 +57,10 @@
           height: 12.5rem;
         }
       }
+
+      p {
+        color: red;
+      }
     }
 
     button {
@@ -60,7 +68,7 @@
       color: var(--black);
       border: none;
       border-radius: 10px;
-      padding: 0.5rem 1.25rem;
+      padding: 0.5rem 2rem;
 
       &:hover {
         filter: brightness(1.2);

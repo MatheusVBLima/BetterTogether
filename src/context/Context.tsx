@@ -7,6 +7,7 @@ import axios from "axios";
 type User = {
   permissions: string[];
   roles: string[];
+  id: number;
 } | null;
 
 type SignInCredentials = {
@@ -18,6 +19,11 @@ type SignUpCredentials = {
   name: string;
   email: string;
   password: string;
+};
+
+type editUserCredentials = {
+  name?: string;
+  password?: string;
 };
 
 type recoverCredentials = {
@@ -35,16 +41,21 @@ type redefinePasswordCredentials = {
   solicitation: string;
 };
 
+type addExperienceCredentials = {
+  experienceName: string[];
+};
+
 type ContextData = {
   signIn(credentials: SignInCredentials): Promise<void>;
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
-
+  editUser(credentials: editUserCredentials): Promise<void>;
   user: User;
   isAuthenticated: boolean;
-  recover(credentials: recoverCredentials): Promise<void>;
-  changePassword(credentials: changePasswordCredentials): Promise<void>;
-  redefinePassword(credentials: redefinePasswordCredentials): Promise<void>;
+  forgotPassword(credentials: recoverCredentials): Promise<void>;
+  /* changePassword(credentials: changePasswordCredentials): Promise<void>; */
+  /* redefinePassword(credentials: redefinePasswordCredentials): Promise<void>; */
+  addExperience(credentials: addExperienceCredentials): Promise<void>;
 };
 
 export const Context = createContext({} as ContextData);
@@ -71,8 +82,8 @@ export function Provider({ children }: ProviderProps) {
       api
         .get("/me")
         .then((response) => {
-          const { permissions, roles } = response.data;
-          setUser({ permissions, roles });
+          const { permissions, roles, id } = response.data;
+          setUser({ permissions, roles, id });
         })
         .catch(() => {
           signOut();
@@ -97,14 +108,24 @@ export function Provider({ children }: ProviderProps) {
       path: "/",
     });
 
-    setUser({
+    /* setUser({
       permissions,
       roles,
-    });
+      id,
+    }); */
 
     api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
     Router.push("/painel");
+  }
+
+  async function editUser({ name, password }: editUserCredentials) {
+    await api.put("/me", {
+      name,
+      password,
+    });
+
+    signOut();
   }
 
   async function signUp({ name, email, password }: SignUpCredentials) {
@@ -116,13 +137,19 @@ export function Provider({ children }: ProviderProps) {
     signIn({ email, password });
   }
 
-  async function recover({ email }: recoverCredentials) {
+  async function forgotPassword({ email }: recoverCredentials) {
     await api.post("/solicitations/forgot-password", {
       email,
     });
   }
 
-  async function redefinePassword({
+  async function addExperience(experienceName: addExperienceCredentials) {
+    await api.post(`users/${user.id}/experiences`, {
+      experience_name: experienceName,
+    });
+  }
+
+  /* async function redefinePassword({
     password,
     password_confirmation,
     solicitation,
@@ -135,8 +162,10 @@ export function Provider({ children }: ProviderProps) {
 
     signOut();
   }
+ */
+  //Mudar Senha
 
-  async function changePassword({
+  /*   async function changePassword({
     password,
     password_confirmation,
   }: changePasswordCredentials) {
@@ -146,7 +175,7 @@ export function Provider({ children }: ProviderProps) {
     });
 
     signOut();
-  }
+  } */
 
   return (
     <Context.Provider
@@ -154,9 +183,11 @@ export function Provider({ children }: ProviderProps) {
         signIn,
         signUp,
         signOut,
-        recover,
-        changePassword,
-        redefinePassword,
+        editUser,
+        forgotPassword,
+        /* changePassword, */
+        /* redefinePassword, */
+        addExperience,
         isAuthenticated,
         user,
       }}

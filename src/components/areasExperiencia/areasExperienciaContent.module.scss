@@ -22,6 +22,16 @@
       margin-right: 22%;
     }
 
+    .errorContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-right: 22%;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
     .formsContainer {
       margin-right: 22%;
       width: 78%;
@@ -74,6 +84,10 @@
       &:hover {
         filter: brightness(1.2);
       }
+    }
+
+    p {
+      color: red;
     }
   }
 }
