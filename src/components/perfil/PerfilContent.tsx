@@ -116,8 +116,8 @@ export default function PerfilContent({ userMe }: Props) {
         <div className={styles.formContainer}>
           {isName ? (
             <form onSubmit={handleChangeName}>
-              <input type='text' placeholder='Novo Nome' />
-              <input type='text' placeholder='Confirmar Novo Nome' />
+              <input type='text' placeholder='Novo Nome' required />
+              <input type='text' placeholder='Confirmar Novo Nome' required />
               <button type='submit'>Enviar</button>
               {isLoading && (
                 <ClipLoader
@@ -135,8 +135,12 @@ export default function PerfilContent({ userMe }: Props) {
             </form>
           ) : (
             <form onSubmit={handleChangePassword}>
-              <input type='password' placeholder='Nova Senha' />
-              <input type='password' placeholder='Confirmar Nova Senha' />
+              <input type='password' placeholder='Nova Senha' required />
+              <input
+                type='password'
+                placeholder='Confirmar Nova Senha'
+                required
+              />
               <button type='submit'>Enviar</button>
               {isLoading && (
                 <ClipLoader

@@ -13,11 +13,21 @@ type userMe = {
   experiences: [];
 };
 
+type userMeProjects = {
+  id: number;
+  name: string;
+  description: string;
+  contact: string;
+  experiences: [];
+  candidates: [];
+};
+
 interface Props {
   userMe: userMe;
+  userMeProjects: userMeProjects[];
 }
 
-export default function meusProjetos({ userMe }: Props) {
+export default function meusProjetos({ userMe, userMeProjects }: Props) {
   return (
     <div>
       <Head>
@@ -27,7 +37,7 @@ export default function meusProjetos({ userMe }: Props) {
         {/*  <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <HeaderDashboard />
-      <MeusProjetosContent userMe={userMe} />
+      <MeusProjetosContent userMe={userMe} userMeProjects={userMeProjects} />
     </div>
   );
 }
@@ -35,7 +45,11 @@ export default function meusProjetos({ userMe }: Props) {
 export const getServerSideProps = withSSRAuth(async (ctx) => {
   const apiClient = setupApiClient(ctx);
   let userMe = null;
+  let userMeProjects = [];
   try {
+    const responseUserMeProjects = await apiClient.get("/me/projects");
+    userMeProjects = responseUserMeProjects.data;
+    console.log(userMeProjects);
     const responseUserMe = await apiClient.get("/me");
     userMe = responseUserMe.data;
   } catch (err) {
@@ -44,6 +58,7 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
   return {
     props: {
       userMe: userMe,
+      userMeProjects: userMeProjects,
     },
   };
 });

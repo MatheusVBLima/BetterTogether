@@ -40,10 +40,10 @@ export default function AreasExperienciaContent() {
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     const values = inputs.map((input) => input.value);
-    console.log(values);
     const data = {
-      experienceName: values,
+      experience_name: values,
     };
+
     try {
       setIsLoading(true);
       await addExperience(data);
@@ -88,11 +88,11 @@ export default function AreasExperienciaContent() {
                 onChange={(event) => handleInputChange(index, event)}
               >
                 <option value=''>Selecione...</option>
-                <option value='PHP'>PHP</option>
-                <option value='React'>React</option>
-                <option value='Spring'>Spring</option>
-                <option value='Next'>Next</option>
-                <option value='Express'>Express</option>
+                <option value='1'>PHP</option>
+                <option value='3'>React</option>
+                {/* <option value='Spring'>Spring</option> */}
+                <option value='2'>Next</option>
+                <option value='4'>Express</option>
               </select>
             </div>
           ))}

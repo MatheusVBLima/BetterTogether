@@ -70,16 +70,19 @@ export default function PainelContent({ userMe, vacancies }: Props) {
             {vacancies.map((vacancy) => (
               <div key={vacancy.id} className={styles.card}>
                 <div className={styles.titleContainer}>
-                  <h4>Nome: {vacancy.name}</h4>
-                  <h4>Dono: {vacancy.user.name}</h4>
+                  <span>Nome:</span>
+                  <p> {vacancy.name}</p>
+                </div>
+                <div className={styles.ownerContainer}>
+                  <span>Dono:</span> <p>{vacancy.user.name}</p>
                 </div>
                 <div className={styles.descriptionContainer}>
-                  <h4>Descrição do Projeto: </h4>
+                  <span>Descrição do Projeto: </span>
                   <p>{vacancy.description}</p>
                 </div>
                 <div className={styles.experiencesContainer}>
-                  <h4>Experiências Desejadas:</h4>
-                  <ul>
+                  <span>Experiências Desejadas:</span>
+                  <ul className={styles.experienceContainer}>
                     {vacancy.experiences.map((experience) => (
                       <li key={experience.id}>{experience.name}</li>
                     ))}

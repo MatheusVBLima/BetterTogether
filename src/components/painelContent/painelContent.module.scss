@@ -65,26 +65,98 @@
 
         .titleContainer {
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-start;
           align-items: center;
           gap: 1rem;
-          border-bottom: 1px solid var(--yellow);
+
           width: 100%;
+          border-bottom: 1px solid var(--yellow);
+          font-size: 1.25rem;
+          padding-bottom: 0.5rem;
+
+          span {
+            font-size: 1.25rem;
+            font-weight: bold;
+          }
+        }
+
+        .ownerContainer {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 1rem;
+
+          width: 100%;
+          border-bottom: 1px solid var(--yellow);
+          font-size: 1.25rem;
+          padding-bottom: 0.5rem;
+
+          span {
+            font-size: 1.25rem;
+            font-weight: bold;
+          }
         }
 
         .descriptionContainer {
           display: flex;
+          justify-content: center;
           flex-direction: column;
-          gap: 0.5rem;
+          align-items: flex-start;
+          gap: 1rem;
+
           width: 100%;
           border-bottom: 1px solid var(--yellow);
+          font-size: 1.25rem;
+          padding-bottom: 0.5rem;
+
+          span {
+            font-size: 1.25rem;
+            font-weight: bold;
+          }
         }
         .experiencesContainer {
           display: flex;
+          justify-content: center;
           flex-direction: column;
-          gap: 0.5rem;
+          align-items: flex-start;
+          gap: 1rem;
+
           width: 100%;
           border-bottom: 1px solid var(--yellow);
+          font-size: 1.25rem;
+          padding-bottom: 0.5rem;
+
+          span {
+            font-size: 1.25rem;
+            font-weight: bold;
+          }
+
+          .experienceContainer {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            font-size: 1.25rem;
+            padding-bottom: 0.5rem;
+          }
+        }
+
+        .contato {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+
+          width: 100%;
+
+          padding-bottom: 0.5rem;
+
+          span {
+            font-size: 1.25rem;
+            font-weight: bold;
+          }
         }
       }
     }

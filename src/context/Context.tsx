@@ -42,7 +42,7 @@ type redefinePasswordCredentials = {
 };
 
 type addExperienceCredentials = {
-  experienceName: string[];
+  experience_name: string[];
 };
 
 type ContextData = {
@@ -143,10 +143,8 @@ export function Provider({ children }: ProviderProps) {
     });
   }
 
-  async function addExperience(experienceName: addExperienceCredentials) {
-    await api.post(`users/${user.id}/experiences`, {
-      experience_name: experienceName,
-    });
+  async function addExperience(experience_name: addExperienceCredentials) {
+    await api.post(`users/${user.id}/experiences`, experience_name);
   }
 
   /* async function redefinePassword({

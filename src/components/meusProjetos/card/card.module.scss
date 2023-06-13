@@ -1,19 +1,148 @@
 .cardContainer {
+  background-color: var(--gray-700);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
-  gap: 1rem;
-
-  background-color: var(--gray-100);
-  color: var(--gray-800);
-  border-radius: 10px;
-
-  max-height: 300px;
+  align-items: flex-start;
+  gap: 0.5rem;
   overflow-y: auto;
-  padding-top: 0.5rem;
 
-  .pContainer {
+  .titleContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+    border-bottom: 1px solid var(--yellow);
+    font-size: 1.25rem;
+    padding-bottom: 0.5rem;
+
+    span {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+  }
+
+  .descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    width: 100%;
+    border-bottom: 1px solid var(--yellow);
+    padding-bottom: 0.5rem;
+    span {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+  }
+
+  .experiencesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    width: 100%;
+    border-bottom: 1px solid var(--yellow);
+    padding-bottom: 0.5rem;
+    span {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+  }
+
+  .candidatesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    width: 100%;
+
+    span {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    .candidateContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0.25rem 1.5rem;
+      border-radius: 10px;
+      background-color: var(--gray-900);
+      width: 100%;
+      margin-bottom: 0.5rem;
+
+      .candidateNameContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+
+        width: 100%;
+
+        font-size: 1.25rem;
+        padding-bottom: 0.5rem;
+
+        span {
+          font-size: 1.25rem;
+          font-weight: bold;
+        }
+      }
+
+      .candidateEmailContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        font-size: 1.25rem;
+        padding-bottom: 0.5rem;
+
+        span {
+          font-size: 1.25rem;
+          font-weight: bold;
+        }
+      }
+
+      .candidateExperiencesContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0.5rem;
+        width: 100%;
+        padding-bottom: 0.5rem;
+
+        span {
+          font-size: 1.25rem;
+          font-weight: bold;
+        }
+
+        .candidateExperienceContainer {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 1rem;
+          width: 100%;
+          font-size: 1.25rem;
+          padding-bottom: 0.5rem;
+        }
+      }
+    }
+
+    /* .pContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,5 +163,6 @@
     span {
       font-weight: bold;
     }
+  } */
   }
 }

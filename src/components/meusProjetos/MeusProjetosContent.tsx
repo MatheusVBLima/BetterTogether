@@ -12,11 +12,28 @@ type userMe = {
   experiences: [];
 };
 
+type Candidate = {
+  id: number;
+  name: string;
+  email: string;
+  experiences: [];
+};
+
+type userMeProjects = {
+  id: number;
+  name: string;
+  description: string;
+  contact: string;
+  experiences: [];
+  candidates: Candidate[][];
+};
+
 interface Props {
   userMe: userMe;
+  userMeProjects: userMeProjects[];
 }
 
-export default function MeusProjetosContent({ userMe }: Props) {
+export default function MeusProjetosContent({ userMe, userMeProjects }: Props) {
   return (
     <div className={styles.wrapper}>
       <Dashboard />
@@ -31,33 +48,16 @@ export default function MeusProjetosContent({ userMe }: Props) {
           </div>
         ) : (
           <div className={styles.formsContainer}>
-            <Card
-              titulo={"titulo"}
-              descrição={"descrição"}
-              contato={"contato"}
-            />
-            <Card
-              titulo={"titulo"}
-              descrição={"descrição"}
-              contato={"contato"}
-            />
-            <Card
-              titulo={"titulo"}
-              descrição={
-                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. adsdasdadadadadsdasdasdasda Deleniti consequatur at vel laboriosam consequuntur, totam repellendus explicabo nisi fuga beatae repudiandae aut, corrupti, quasi architecto placeat voluptates quisquam sapiente alias? Et impedit tempore aperiam nisi, atque perspiciatis dolores ad culpa?"
-              }
-              contato={"contato"}
-            />
-            <Card
-              titulo={"titulo"}
-              descrição={"descrição"}
-              contato={"contato"}
-            />
-            <Card
-              titulo={"titulo"}
-              descrição={"descrição"}
-              contato={"contato"}
-            />
+            {userMeProjects.map((project) => (
+              <Card
+                key={project.id}
+                titulo={project.name}
+                descrição={project.description}
+                contato={project.contact}
+                experiences={project.experiences}
+                candidatos={project.candidates}
+              />
+            ))}
           </div>
         )}
       </div>
