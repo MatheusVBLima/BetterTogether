@@ -1,2 +1,2 @@
-## Link: https://bettertogether-tcc.vercel.app/
+Link: https://bettertogether-tcc.vercel.app/
 
