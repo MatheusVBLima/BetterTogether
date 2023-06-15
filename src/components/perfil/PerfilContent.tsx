@@ -23,8 +23,10 @@ export default function PerfilContent({ userMe }: Props) {
   const [confirm, setConfirm] = useState<boolean>(false);
   const [isPassword, setIsPassword] = useState<boolean>(false);
   const [isName, setIsName] = useState<boolean>(false);
+  const [name, setName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const { editUser } = useContext(Context);
+  const { changeUserCredential } = useContext(Context);
 
   function handleIsName() {
     setIsName(true);
@@ -39,11 +41,11 @@ export default function PerfilContent({ userMe }: Props) {
   async function handleChangeName(event: FormEvent) {
     event.preventDefault();
     const data = {
-      name: null,
+      name,
     };
     try {
       setIsLoading(true);
-      await editUser(data);
+      await changeUserCredential(data);
       setConfirm(true);
     } catch (error) {
       if (error.response && error.response.data) {
@@ -69,11 +71,11 @@ export default function PerfilContent({ userMe }: Props) {
   async function handleChangePassword(event: FormEvent) {
     event.preventDefault();
     const data = {
-      name: null,
+      password,
     };
     try {
       setIsLoading(true);
-      await editUser(data);
+      await changeUserCredential(data);
       setConfirm(true);
     } catch (error) {
       if (error.response && error.response.data) {
@@ -117,7 +119,12 @@ export default function PerfilContent({ userMe }: Props) {
           {isName ? (
             <form onSubmit={handleChangeName}>
               <input type='text' placeholder='Novo Nome' required />
-              <input type='text' placeholder='Confirmar Novo Nome' required />
+              <input
+                type='text'
+                placeholder='Confirmar Novo Nome'
+                required
+                onChange={(e) => setName(e.target.value)}
+              />
               <button type='submit'>Enviar</button>
               {isLoading && (
                 <ClipLoader
@@ -140,6 +147,7 @@ export default function PerfilContent({ userMe }: Props) {
                 type='password'
                 placeholder='Confirmar Nova Senha'
                 required
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button type='submit'>Enviar</button>
               {isLoading && (

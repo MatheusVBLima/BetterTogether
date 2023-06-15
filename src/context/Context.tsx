@@ -49,7 +49,7 @@ type ContextData = {
   signIn(credentials: SignInCredentials): Promise<void>;
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
-  editUser(credentials: editUserCredentials): Promise<void>;
+  changeUserCredential(credentials: editUserCredentials): Promise<void>;
   user: User;
   isAuthenticated: boolean;
   forgotPassword(credentials: recoverCredentials): Promise<void>;
@@ -119,7 +119,7 @@ export function Provider({ children }: ProviderProps) {
     Router.push("/painel");
   }
 
-  async function editUser({ name, password }: editUserCredentials) {
+  async function changeUserCredential({ name, password }: editUserCredentials) {
     await api.put("/me", {
       name,
       password,
@@ -181,7 +181,7 @@ export function Provider({ children }: ProviderProps) {
         signIn,
         signUp,
         signOut,
-        editUser,
+        changeUserCredential,
         forgotPassword,
         /* changePassword, */
         /* redefinePassword, */
